@@ -35,9 +35,12 @@ MONGO_HOST = os.getenv("MONGO_HOST")
 uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}/?retryWrites=true&w=majority"
 client = pymongo.MongoClient(uri)
 
+# connect to db and set up client and connection
 db = client["flight_delays"]
 collection = db["flights"]
 ```
+
+### Run this cell if you have no data currently loaded or want to repopulate
 
 
 ```python
@@ -73,6 +76,8 @@ SAMPLE_SIZE = 50000
 if len(all_rows) > SAMPLE_SIZE:
     all_rows = random.sample(all_rows, SAMPLE_SIZE)
     print(f"Sampled down to {SAMPLE_SIZE} rows")
+    
+collection.delete_many({})
 
 # Now transform and insert
 docs = []
@@ -145,6 +150,24 @@ if docs:
 
 print(f"Done! {count} documents inserted.")
 ```
+
+    Reading ../data/T_ONTIME_REPORTING_jan.csv...
+    Reading ../data/T_ONTIME_REPORTING_mar.csv...
+    Reading ../data/T_ONTIME_REPORTING_feb.csv...
+    Total rows across all files: 1645503
+    Sampled down to 50000 rows
+    Inserted 5000 documents...
+    Inserted 10000 documents...
+    Inserted 15000 documents...
+    Inserted 20000 documents...
+    Inserted 25000 documents...
+    Inserted 30000 documents...
+    Inserted 35000 documents...
+    Inserted 40000 documents...
+    Inserted 45000 documents...
+    Inserted 50000 documents...
+    Done! 50000 documents inserted.
+
 
 Now that this is properly uploaded to MongoDB we can pull it back in (and only use the features we want).
 
@@ -229,7 +252,7 @@ df.head(3)
 
 ```
 
-    Loaded 58,253 records  |  Delayed: 22.8%
+    Loaded 49,097 records  |  Delayed: 19.7%
 
 
 
@@ -270,44 +293,44 @@ df.head(3)
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>AA</td>
+      <td>WN</td>
       <td>1</td>
-      <td>1</td>
-      <td>6</td>
-      <td>10</td>
-      <td>381.0</td>
-      <td>10</td>
-      <td>NY</td>
-      <td>12478</td>
-      <td>12892</td>
+      <td>2</td>
+      <td>20</td>
+      <td>22</td>
+      <td>105.0</td>
+      <td>3</td>
+      <td>UT</td>
+      <td>14869</td>
+      <td>14107</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0</td>
-      <td>AA</td>
-      <td>1</td>
-      <td>1</td>
-      <td>22</td>
-      <td>6</td>
-      <td>292.0</td>
-      <td>9</td>
-      <td>NV</td>
-      <td>12889</td>
-      <td>12478</td>
+      <td>DL</td>
+      <td>4</td>
+      <td>2</td>
+      <td>14</td>
+      <td>17</td>
+      <td>121.0</td>
+      <td>3</td>
+      <td>TX</td>
+      <td>11298</td>
+      <td>10397</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0</td>
-      <td>AA</td>
+      <td>UA</td>
+      <td>7</td>
+      <td>2</td>
+      <td>19</td>
+      <td>20</td>
+      <td>76.0</td>
       <td>1</td>
-      <td>1</td>
-      <td>6</td>
-      <td>10</td>
-      <td>141.0</td>
-      <td>3</td>
-      <td>WI</td>
-      <td>13485</td>
-      <td>11057</td>
+      <td>CA</td>
+      <td>12892</td>
+      <td>12889</td>
     </tr>
   </tbody>
 </table>
@@ -324,16 +347,16 @@ the Random Forest can consume them without imposing an arbitrary ordinal orderin
 ```python
 from sklearn.model_selection import train_test_split
 
-
 VIZ_COLS  = ["origin_airport", "dest_airport", "month"]
 MODEL_COLS = [c for c in df.columns if c not in VIZ_COLS]
 df_model   = df[MODEL_COLS].copy()
 
+# one-hot encode categorical variables
 df_encoded = pd.get_dummies(df_model, columns=["carrier", "origin_state"], drop_first=False)
 
 X = df_encoded.drop(columns=["is_delayed"])
 y = df_encoded["is_delayed"]
-
+# train test split
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.20, random_state=42, stratify=y
 )
@@ -343,7 +366,7 @@ print(f"Features: {X_train.shape[1]}")
 
 ```
 
-    Train: 46,602 rows  |  Test: 11,651 rows
+    Train: 39,277 rows  |  Test: 9,820 rows
     Features: 71
 
 
@@ -355,7 +378,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
     classification_report, roc_auc_score, confusion_matrix, ConfusionMatrixDisplay
 )
-
+# randomforests for classification
 rf = RandomForestClassifier(
     n_estimators=200,
     max_depth=12,
@@ -379,17 +402,17 @@ logger.info(f"ROC-AUC: {auc:.4f}")
 
                   precision    recall  f1-score   support
     
-         On-Time       0.83      0.69      0.76      8993
-         Delayed       0.34      0.53      0.41      2658
+         On-Time       0.84      0.61      0.70      7889
+         Delayed       0.24      0.52      0.33      1931
     
-        accuracy                           0.66     11651
-       macro avg       0.59      0.61      0.59     11651
-    weighted avg       0.72      0.66      0.68     11651
+        accuracy                           0.59      9820
+       macro avg       0.54      0.56      0.52      9820
+    weighted avg       0.72      0.59      0.63      9820
     
-    ROC-AUC: 0.6618
+    ROC-AUC: 0.5990
 
 
-Suprising, 66% ROC-AUC, I expected this to be a bit higher but then again so many external factors play into delays, so im not very surprised.
+Suprising, 60% ROC-AUC, I expected this to be a bit higher but then again so many external factors play into delays, so im not very surprised.
 
 ### Visualization
 
@@ -483,7 +506,7 @@ print("Figure saved to figures/delay_model_results.png")
 
 
     
-![png](master_pipeline_files/master_pipeline_13_0.png)
+![png](master_pipeline_files/master_pipeline_14_0.png)
     
 
 
@@ -581,7 +604,7 @@ print("Saved → figures/best_times_to_fly.png")
 
 
     
-![png](master_pipeline_files/master_pipeline_16_0.png)
+![png](master_pipeline_files/master_pipeline_17_0.png)
     
 
 

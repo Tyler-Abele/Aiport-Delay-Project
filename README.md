@@ -1,7 +1,6 @@
 # DS 4320 Project 2: Airport Delay Analysis
 
-This repository contains a fully estbalished secondary dataset built using implicit schema to predict the likelihood of airport delays across the United States. to make th edata more consistent and modeling-friendly, the project standardizes multiple sources with different time granularities into a common airport-month analytical unit. A noSQL approach has been taken with regards to data creation and storage, with all data being accesable on MongoDB Atlas. A machine learning pipeline loads the data into MongoDB and then pulls from it to create a modeling dataset. The goal is the support interpretable delay forecasting for policymakers, airline employees, and airport planners, in order to improve air travel in the United States.
- -- refinement needed once problem starts to get developed more
+This repository contains a fully established secondary dataset built using implicit schema to predict the likelihood of airport delays across the United States. to make the data more consistent and modeling-friendly, the project standardizes multiple sources with different time granularities into a common airport-month analytical unit. A noSQL approach has been taken with regards to data creation and storage, with all data being accesable on MongoDB Atlas. A machine learning pipeline loads the data into MongoDB and then pulls from it to create a modeling dataset. The goal is the support interpretable delay forecasting for policymakers, airline employees, and airport planners, in order to improve air travel in the United States.
 
  ## Author
  - Name: Tyler Abele
@@ -17,7 +16,7 @@ This repository contains a fully estbalished secondary dataset built using impli
 | Data (repo) | [link](./data/) |
 | Pipeline Notebook | [link](./pipeline/master_pipeline.ipynb)|
 | Pipeline Markdown | [link](./pipeline/master_pipeline.md)|
-| Liscense | [link](./LICENSE)|
+| License | [link](./LICENSE)|
 
 ## Problem Definition
 
@@ -35,9 +34,8 @@ The general problem of "predicting outcomes" is too broad to be actionable, it
 could mean anything from sports scores to election results. I narrowed to flight delays because the domain has abundant, well-structured public data from the Bureau of Transportation Statistics (BTS), a clear binary outcome (delayed vs. on-time using the FAA's standard 15-minute threshold), and features that map naturally to the document model, each flight is a self-contained document with nested airline, airport, schedule, and weather information. The problem is also well-suited for the classification techniques covered in DS 3021/4021, making the ML component straightforward to implement.
 
 ### Press Release
-**Headline** New Model Predicts Flight Delays With [X]% Accuracy — Helping Travelers
+**Headline** New Model Predicts Flight Delays With 66% Accuracy — Helping Travelers
 Avoid the Gate Wait
--- Update accruacy with final performance
 
 see the full press release: [press-release](./press-release.md)
 
@@ -113,6 +111,9 @@ and loaded into a MongoDB Atlas collection called "flights" within the
 | File | Description | Link |
 | ---- | ----------- | ---- |
 | data_loading.ipynb | Loaded the data from the csv files into MongoDB Cluster 0 | [Link](https://github.com/Tyler-Abele/Aiport-Delay-Project/blob/main/loading/data_loading.ipynb) |
+| master_pipeline.ipynb | Master pipleine that has all code needed to run everything in the correct order | [Link](https://github.com/Tyler-Abele/Aiport-Delay-Project/blob/main/pipeline/master_pipeline.ipynb)
+
+Note: Everything can and should just be ran on the master pipeline, In order to conenct and run properly, make sure to put the environment variable names into a .env file. 
 
 ### Rationale
 The most significant decision is defining "delayed" as an arrival delay of

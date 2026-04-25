@@ -2,7 +2,7 @@
 
 ## Why does this matter?
 
-Every year, hundreds of millions of passengers pass through U.S. airports, and roughly 22% of their flights arrives late. For travelers, a delay can mean missed connections, lost hotel nights, blown business meetings, or sitting on a tarmac for hours with no information. Airlines lose billions in crew overtime, fuel burn, and passenger compensation. And yet when you book a flight today, the best information you get is a vague on-time percentage that tells you almost nothing about whether your specific flight on your specific day is likely to be late. There has to be a better way.
+Every year, hundreds of millions of passengers pass through U.S. airports, and roughly 20% of their flights arrives late. For travelers, a delay can mean missed connections, lost hotel nights, blown business meetings, or sitting on a tarmac for hours with no information. Airlines lose billions in crew overtime, fuel burn, and passenger compensation. And yet when you book a flight today, the best information you get is a vague on-time percentage that tells you almost nothing about whether your specific flight on your specific day is likely to be late. There has to be a better way.
 
 ## The Problem
 
