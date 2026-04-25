@@ -75,15 +75,15 @@ The domain of this project is air transportation operations and delay forecastin
 
 ### Background Readings
 
-All readings are kept in this onedrive folder: [readings](https://myuva-my.sharepoint.com/:f:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings?csf=1&web=1&e=4gN5yr)
+All readings are kept in this onedrive folder: [readings](https://myuva-my.sharepoint.com/:f:/g/personal/xxe9ff_virginia_edu/IgDiF7pND8vqR5clS9k3_wkUARD6hb1RwIu3KQcrKjtF6kk)
 
-|**title** | **brief summary** | **link **|
+|**title** | **brief summary** | **link** |
 | ------  | ------- | ----- |
 |Technical Directive No39 On-Time 2025| official documentation describing all fields in the Reporting Carrier On-Time Performance dataset, including delay cause breakdowns and measurement definitions, very technical read (literally federal documentation)| [link](https://myuva-my.sharepoint.com/:b:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings/Technical%20Directive%20No%20%2039%20On-Time%202025.pdf?csf=1&web=1&e=bUa2Sl) |
-| FAA NextGen Weather Integration Overview| explains how the FAA incorporates weather data into traffic flow management and how weather drives the majority of NAS delays| [link](https://myuva-my.sharepoint.com/:u:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings/FAA%20NextGen%20Weather%20Overview.url?csf=1&web=1&e=98gWyC) |
-| Machine Learning Approaches to Flight Delay Prediction | surveys different ML techniques applied to flight delay prediction including random forests, gradient boosting, and neural networks, comparing accuracy across feature sets| [link](https://myuva-my.sharepoint.com/:u:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings/ML%20for%20predicting%20Flight%20Delays.url?csf=1&web=1&e=F8Ha5P) |
+| FAA NextGen Weather Integration Overview| explains how the FAA incorporates weather data into traffic flow management and how weather drives the majority of NAS delays| [link](https://myuva-my.sharepoint.com/:u:/g/personal/xxe9ff_virginia_edu/IQAsmqTdcjJXR4iNCBijbTNZAeogN8HAdbPpLAms9vnRMlE?e=tUbmHN) |
+| Machine Learning Approaches to Flight Delay Prediction | surveys different ML techniques applied to flight delay prediction including random forests, gradient boosting, and neural networks, comparing accuracy across feature sets| [link](https://myuva-my.sharepoint.com/:u:/g/personal/xxe9ff_virginia_edu/IQAOnq50ubJVQY5L2j4odeu-AebBtxrEX1wUREPZvF_rgxk?e=CNiWBa) |
 | Economic Impact of Flight Delays | quantifies the annual cost of flight delays to airlines, passengers, and the broader economy at over $30 billion | [link](https://myuva-my.sharepoint.com/:u:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings/Aviation%20economics%20and%20policy%20projects.url?csf=1&web=1&e=re84oc) |
-| Air Travel Consumer Report | industry group summary of delay causes, seasonal trends, and airline-level performance comparisons | [link](https://myuva-my.sharepoint.com/:u:/r/personal/xxe9ff_virginia_edu/Documents/Final%20Project/readings/Consumer%20Report.url?csf=1&web=1&e=GKySaf) |
+| Air Travel Consumer Report | industry group summary of delay causes, seasonal trends, and airline-level performance comparisons | [link](https://myuva-my.sharepoint.com/:u:/g/personal/xxe9ff_virginia_edu/IQAdW1V1ek-8Sqqw8tuyzZneATa3qOf8BFdESC2OnTvGAr0?e=eqJGk2) |
 
 ## Data Creation
 
