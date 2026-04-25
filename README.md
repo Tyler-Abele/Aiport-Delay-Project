@@ -6,7 +6,7 @@ This repository contains a fully established secondary dataset built using impli
  - Name: Tyler Abele
  - NetID: xxe9ff
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19750295.svg)](https://doi.org/10.5281/zenodo.19750295)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19666622..svg)](https://doi.org/10.5281/zenodo.19666622.)
 
 ## Quick Links:
 | **Resource** | **Link** |
